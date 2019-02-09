@@ -1,7 +1,10 @@
 import sys
 import glob
 import os
+import time
 from os.path import *
+
+start_time = time.time()
 
 if len(sys.argv) < 2:
     print("Usage : python syncfilename.py BASE_DIR TARGET_DIR")
@@ -23,4 +26,5 @@ for filename in glob.glob(abspath(sys.argv[2] + '\\*')):
 for filename in glob.glob(abspath(sys.argv[1]) + '\\*'):
     os.rename(target_dict.get(getsize(filename)), target_dir + '\\' + basename(filename))
 
+print("Complete. (%.02f seconds)" % (time.time() - start_time))
 
